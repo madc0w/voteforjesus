@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Cast Your Vote — Vote for Jesus</title>
+		<title>Why Raising Our Hands to Vote Is Turning Our Backs on God</title>
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap');
 
@@ -19,12 +19,7 @@
 				min-height: 100vh;
 				display: flex;
 				flex-direction: column;
-				background: linear-gradient(
-					135deg,
-					#1a1a2e 0%,
-					#16213e 40%,
-					#0f3460 100%
-				);
+				background: #faf8f5;
 				overflow-x: hidden;
 			}
 
@@ -59,196 +54,64 @@
 				color: #ffd700;
 			}
 
-			/* Main Content */
-			.vote-page {
+			/* Article */
+			.article-container {
 				flex: 1;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+				max-width: 800px;
+				margin: 0 auto;
 				padding: 3rem 2rem;
-				position: relative;
 			}
 
-			.vote-page::before {
-				content: '';
-				position: absolute;
-				top: -50%;
-				left: -50%;
-				width: 200%;
-				height: 200%;
-				background: radial-gradient(
-						circle at 30% 50%,
-						rgba(255, 215, 0, 0.08) 0%,
-						transparent 50%
-					),
-					radial-gradient(
-						circle at 70% 50%,
-						rgba(255, 255, 255, 0.05) 0%,
-						transparent 50%
-					);
-				animation: shimmer 15s ease-in-out infinite alternate;
-			}
-
-			@keyframes shimmer {
-				0% {
-					transform: translateX(-5%) translateY(-5%);
-				}
-				100% {
-					transform: translateX(5%) translateY(5%);
-				}
-			}
-
-			.vote-wrapper {
-				position: relative;
-				z-index: 1;
-				max-width: 650px;
-				width: 100%;
-			}
-
-			.vote-header {
-				text-align: center;
-				margin-bottom: 2.5rem;
-				color: #fff;
-			}
-
-			.vote-header .cross-icon {
-				font-size: 3rem;
-				color: #ffd700;
-				margin-bottom: 1rem;
-				filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
-			}
-
-			.vote-header h1 {
+			.article-container h1 {
 				font-family: 'Playfair Display', serif;
-				font-size: 3rem;
+				font-size: 2.6rem;
 				font-weight: 900;
-				margin-bottom: 0.5rem;
-			}
-
-			.vote-header h1 span {
-				color: #ffd700;
-			}
-
-			.vote-header p {
-				font-size: 1.15rem;
-				opacity: 0.8;
-				font-weight: 300;
-			}
-
-			/* Ballot Card */
-			.ballot-box {
-				background: #fff;
-				border-radius: 24px;
-				padding: 3rem;
-				text-align: center;
-				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-				border-top: 4px solid #ffd700;
-			}
-
-			.ballot-box h2 {
-				font-family: 'Playfair Display', serif;
-				font-size: 1.8rem;
 				color: #1a1a2e;
-				margin-bottom: 1rem;
+				line-height: 1.3;
+				margin-bottom: 2rem;
+				text-align: center;
 			}
 
-			.ballot-box .description {
+			.article-container img {
+				display: block;
+				width: 100%;
+				max-width: 700px;
+				margin: 0 auto 2.5rem;
+				border-radius: 12px;
+				box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+			}
+
+			.article-container p {
+				font-size: 1.1rem;
+				line-height: 1.9;
+				margin-bottom: 1.5rem;
+				color: #333;
+			}
+
+			.article-container .scripture {
+				font-style: italic;
+				padding: 1rem 1.5rem;
+				margin: 1.5rem 0;
+				background: #f5f3ef;
+				border-left: 4px solid #ffd700;
+				border-radius: 6px;
 				color: #555;
 				line-height: 1.8;
-				margin-bottom: 2rem;
-				font-size: 1.05rem;
 			}
 
-			.ballot-box .scripture {
-				font-style: italic;
-				color: #888;
-				margin-bottom: 2rem;
-				line-height: 1.7;
-				padding: 1rem 1.5rem;
-				background: #faf8f5;
-				border-radius: 12px;
-				border-left: 3px solid #ffd700;
-			}
-
-			.vote-btn {
-				display: inline-flex;
-				align-items: center;
-				gap: 12px;
-				padding: 18px 55px;
-				background: linear-gradient(135deg, #ffd700, #ffaa00);
-				color: #1a1a2e;
-				border: none;
-				border-radius: 50px;
-				font-family: 'Open Sans', sans-serif;
-				font-size: 1.25rem;
-				font-weight: 700;
-				cursor: pointer;
-				transition: all 0.3s ease;
-				box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
-			}
-
-			.vote-btn:hover {
-				transform: scale(1.05);
-				box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
-			}
-
-			.vote-btn.voted {
-				background: linear-gradient(135deg, #28a745, #20c997);
-				color: #fff;
-				cursor: default;
-			}
-
-			.vote-btn.voted:hover {
-				transform: none;
-				box-shadow: 0 4px 20px rgba(40, 167, 69, 0.3);
-			}
-
-			.vote-count {
-				margin-top: 2rem;
-				font-size: 1rem;
-				color: #888;
-			}
-
-			.vote-count strong {
-				color: #1a1a2e;
-				font-size: 2.2rem;
-				display: block;
-				margin-bottom: 0.3rem;
+			.article-container .amen {
+				text-align: center;
 				font-family: 'Playfair Display', serif;
-			}
-
-			.voter-message {
-				display: none;
+				font-size: 1.6rem;
+				font-weight: 700;
+				color: #1a1a2e;
 				margin-top: 2rem;
-				padding: 1.5rem;
-				background: #f0fff4;
-				border-radius: 12px;
-				color: #2d6a4f;
-				font-size: 1.05rem;
-				line-height: 1.7;
-				border: 1px solid #c3e6cb;
-			}
-
-			.voter-message.show {
-				display: block;
-				animation: fadeIn 0.6s ease;
-			}
-
-			@keyframes fadeIn {
-				from {
-					opacity: 0;
-					transform: translateY(15px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
 			}
 
 			.back-link {
 				display: inline-block;
 				margin-top: 2rem;
-				color: rgba(255, 255, 255, 0.7);
+				color: #1a1a2e;
 				text-decoration: none;
 				font-size: 0.95rem;
 				transition: color 0.3s;
@@ -260,22 +123,22 @@
 
 			/* Footer */
 			footer {
-				background: rgba(0, 0, 0, 0.2);
+				background: rgba(26, 26, 46, 0.95);
 				color: #fff;
 				padding: 1.5rem 2rem;
 				text-align: center;
 				font-size: 0.85rem;
-				opacity: 0.6;
+				opacity: 0.8;
 			}
 
 			/* Responsive */
 			@media (max-width: 768px) {
-				.vote-header h1 {
-					font-size: 2.2rem;
+				.article-container h1 {
+					font-size: 1.8rem;
 				}
 
-				.ballot-box {
-					padding: 2rem 1.5rem;
+				.article-container {
+					padding: 2rem 1.2rem;
 				}
 
 				nav ul {
@@ -297,83 +160,135 @@
 			</ul>
 		</nav>
 
-		<!-- Vote Page -->
-		<main class="vote-page">
-			<div class="vote-wrapper">
-				<div class="vote-header">
-					<div class="cross-icon">&#10013;</div>
-					<h1>Cast Your <span>Vote</span></h1>
-					<p>
-						This isn't a political election &mdash; it's the most important
-						decision of your life
-					</p>
-				</div>
+		<!-- Article -->
+		<main class="article-container">
+			<h1>Why Raising Our Hands to Vote Is Turning Our Backs on God</h1>
 
-				<div class="ballot-box">
-					<h2>&#128499;&#65039; Your Ballot</h2>
-					<p class="description">
-						Voting for Jesus means choosing Him as the Lord of your life &mdash;
-						trusting in His sacrifice, following His teachings, and receiving
-						His gift of eternal life. It's not about religion. It's about a
-						relationship.
-					</p>
-					<div class="scripture">
-						"If you declare with your mouth, 'Jesus is Lord,' and believe in
-						your heart that God raised him from the dead, you will be saved."
-						<br />&mdash; Romans 10:9
-					</div>
-					<button class="vote-btn" id="voteBtn" onclick="castVote()">
-						&#10013; I Vote for Jesus
-					</button>
-					<div class="vote-count">
-						<strong id="voteCounter">0</strong>
-						people have voted for Jesus
-					</div>
-					<div class="voter-message" id="voterMessage">
-						&#127881; <strong>Your vote has been cast!</strong><br />
-						Welcome to the family of God. If this is your first time making this
-						decision, we encourage you to find a local Bible-believing church,
-						start reading the Gospel of John, and talk to God in prayer. He's
-						listening. Always.
-					</div>
-				</div>
+			<img src="polls.png" alt="Polling station" />
 
-				<a href="index.html" class="back-link">&larr; Back to Home</a>
+			<p>
+				Brothers and sisters in Christ, we are living in a time of great
+				confusion. The world tells us we have rights, and that the most
+				important right we have is the right to choose. They tell us that if we
+				want to be good citizens, we have to go to the polling place and cast a
+				vote. But I am here today to tell you, with the Bible as my guide, that
+				for a follower of Jesus Christ, voting is not just a waste of time. It
+				is an offense to a holy God.
+			</p>
+
+			<p>
+				First, we must understand that God&rsquo;s law is the only law. When we
+				participate in a democracy, we are acting as if we have the authority to
+				create laws ourselves. We are saying that by gathering enough votes, we
+				can decide what is right and what is wrong. But the Bible is clear:
+				right and wrong are not decided by majority rule. They are decided by
+				God. When we stand in a voting booth, we are putting ourselves in
+				God&rsquo;s place. We are saying that we get to choose the ruler, and we
+				get to choose the rules. This is the sin of pride, and it is the same
+				sin that caused Satan&rsquo;s fall from Heaven.
+			</p>
+
+			<p>The Bible is very specific about where authority comes from.</p>
+
+			<div class="scripture">
+				&ldquo;Let everyone be subject to the governing authorities, for there
+				is no authority except that which God has established. The authorities
+				that exist have been established by God.&rdquo;<br />
+				&mdash; Romans 13:1
 			</div>
+
+			<p>
+				Notice what this verse does not say. It does not say that the
+				authorities are established by the people. It does not say that we get
+				to vote on them. It says God establishes them. Whether it is a king, a
+				president, or a governor, that person is in power because God put him
+				there. To fight against that authority with our votes is to fight
+				against God&rsquo;s decision.
+			</p>
+
+			<p>
+				Some might say, &ldquo;But we live in a democracy, so we have to choose
+				the best leader!&rdquo; But this thinking forgets a crucial truth: God
+				chooses leaders, not man. The Bible is full of examples. God chose
+				Pharaoh, even though Pharaoh had a hard heart. God chose Cyrus, a pagan
+				king, to carry out His will. If God can use a pagan king to fulfill His
+				perfect plan, do you think your vote can stop His will? Of course not!
+				God&rsquo;s will will be done on earth as it is in Heaven, regardless of
+				what any atheist democracy votes for.
+			</p>
+
+			<p>
+				When we vote, we are acting like God needs our help. We are acting like
+				if we don&rsquo;t stop the &ldquo;bad guy,&rdquo; God&rsquo;s plan might
+				fail. This is a lack of faith. It is an affront to God&rsquo;s
+				sovereignty to think that the future of the world rests on our shoulders
+				instead of His. Voting is not only a waste of our time; it is a lack of
+				trust in the God who holds the kings in His hands.
+			</p>
+
+			<p>
+				God sees those who kneel at the atheist altar of the voting booth. Think
+				about what you are doing when you enter that place. You are standing in
+				line with the world, waiting to pay tribute to a system that was
+				invented by men who wanted to kick God out of the government. Democracy
+				says, &ldquo;The people rule.&rdquo; But the Bible says, &ldquo;The Lord
+				reigns.&rdquo; You cannot serve two masters. Either you serve God, who
+				appoints leaders according to His perfect will, or you serve the false
+				idols of democracy and humanism. Humanism puts Man at the center of the
+				universe. It says that Man is smart enough to govern himself. But we
+				know that the heart of man is desperately wicked. To put your trust in
+				the voting booth is to put your trust in the wicked heart of man. It is
+				an idol, and God is a jealous God. He will not share His glory with a
+				ballot box.
+			</p>
+
+			<p>
+				Look at the Bible. Was Israel a democracy? No. They were a theocracy.
+				They had judges and kings appointed by God. When they cried out for a
+				king like the other nations, God gave them Saul &mdash; but it was
+				considered a rejection of God Himself. God&rsquo;s people were designed
+				to follow God&rsquo;s law, not to make up their own. We are called to be
+				separate from the world. The world runs on democracy and the rule of the
+				people; the church runs on the Lordship of Jesus Christ. We cannot mix
+				the two.
+			</p>
+
+			<p>
+				Finally, we must look at the signs of the times. The endtimes are upon
+				us. The Bible tells us that in the last days, lawlessness will abound,
+				and the love of many will grow cold. We are watching the world slide
+				further into sin every day. If you believe that casting a ballot is
+				going to stop the prophecy of Revelation, you are mistaken. The Bible
+				has already written the ending. God wins. Trying to &ldquo;fix&rdquo;
+				the world through politics is like trying to rearrange the deck chairs
+				on the Titanic. The world is sinking, and our job is not to polish the
+				deck; our job is to point people to the lifeboat, which is Jesus Christ.
+			</p>
+
+			<p>
+				So, I beg you, my brothers and sisters, step away from the voting booth.
+				Put your trust in God. Pray for your leaders, yes. Obey the laws that do
+				not force you to disobey God, yes. But do not pretend that you have the
+				right to choose who sits on the throne. That throne belongs to God
+				alone. To vote is to say that God got it wrong. And our God never gets
+				it wrong.
+			</p>
+
+			<p>
+				This November 3rd, do not be tempted to that altar of secular humanism
+				by deceitful false Christians. Spend your time instead in prayer that
+				God may appoint a righteous leader for the world, and trust in the
+				perfection His plan.
+			</p>
+
+			<p class="amen">Amen.</p>
+
+			<a href="index.html" class="back-link">&larr; Back to Home</a>
 		</main>
 
 		<!-- Footer -->
 		<footer>
 			<p>&copy; Vote for Jesus &mdash; His Kingdom has no term limits</p>
 		</footer>
-
-		<script>
-			let voteCount = parseInt(
-				localStorage.getItem('voteForJesusCount') || '0'
-			);
-			let hasVoted = localStorage.getItem('hasVotedForJesus') === 'true';
-
-			function updateVoteDisplay() {
-				document.getElementById('voteCounter').textContent =
-					voteCount.toLocaleString();
-				if (hasVoted) {
-					const btn = document.getElementById('voteBtn');
-					btn.classList.add('voted');
-					btn.innerHTML = '&#10003; You Voted for Jesus!';
-					document.getElementById('voterMessage').classList.add('show');
-				}
-			}
-
-			function castVote() {
-				if (hasVoted) return;
-				hasVoted = true;
-				voteCount++;
-				localStorage.setItem('voteForJesusCount', voteCount);
-				localStorage.setItem('hasVotedForJesus', 'true');
-				updateVoteDisplay();
-			}
-
-			updateVoteDisplay();
-		</script>
 	</body>
 </html>

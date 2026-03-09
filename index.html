@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vote for Jesus</title>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap');
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Open Sans', sans-serif;
+				color: #2c2c2c;
+				background: #faf8f5;
+				overflow-x: hidden;
+			}
+
+			/* Hero Section */
+			.hero {
+				position: relative;
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				background: linear-gradient(
+					135deg,
+					#1a1a2e 0%,
+					#16213e 40%,
+					#0f3460 100%
+				);
+				color: #fff;
+				overflow: hidden;
+			}
+
+			.hero::before {
+				content: '';
+				position: absolute;
+				top: -50%;
+				left: -50%;
+				width: 200%;
+				height: 200%;
+				background: radial-gradient(
+						circle at 30% 50%,
+						rgba(255, 215, 0, 0.08) 0%,
+						transparent 50%
+					),
+					radial-gradient(
+						circle at 70% 50%,
+						rgba(255, 255, 255, 0.05) 0%,
+						transparent 50%
+					);
+				animation: shimmer 15s ease-in-out infinite alternate;
+			}
+
+			@keyframes shimmer {
+				0% {
+					transform: translateX(-5%) translateY(-5%);
+				}
+				100% {
+					transform: translateX(5%) translateY(5%);
+				}
+			}
+
+			.hero-content {
+				position: relative;
+				z-index: 1;
+				max-width: 800px;
+				padding: 2rem;
+			}
+
+			.cross-icon {
+				font-size: 4rem;
+				color: #ffd700;
+				margin-bottom: 1.5rem;
+				filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+			}
+
+			.hero h1 {
+				font-family: 'Playfair Display', serif;
+				font-size: 4.5rem;
+				font-weight: 900;
+				letter-spacing: 2px;
+				margin-bottom: 0.5rem;
+				text-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
+			}
+
+			.hero h1 span {
+				color: #ffd700;
+			}
+
+			.hero .tagline {
+				font-size: 1.4rem;
+				font-weight: 300;
+				opacity: 0.9;
+				margin-bottom: 2rem;
+				letter-spacing: 1px;
+			}
+
+			.hero .scripture-hero {
+				font-style: italic;
+				font-size: 1.1rem;
+				opacity: 0.8;
+				max-width: 600px;
+				margin: 0 auto 2.5rem;
+				line-height: 1.8;
+			}
+
+			.cta-button {
+				display: inline-block;
+				padding: 16px 48px;
+				background: linear-gradient(135deg, #ffd700, #ffaa00);
+				color: #1a1a2e;
+				font-family: 'Open Sans', sans-serif;
+				font-size: 1.1rem;
+				font-weight: 600;
+				text-decoration: none;
+				border-radius: 50px;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+			}
+
+			.cta-button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+			}
+
+			.scroll-indicator {
+				position: absolute;
+				bottom: 2rem;
+				left: 50%;
+				transform: translateX(-50%);
+				animation: bounce 2s infinite;
+				opacity: 0.6;
+				font-size: 1.5rem;
+				color: #fff;
+			}
+
+			@keyframes bounce {
+				0%,
+				20%,
+				50%,
+				80%,
+				100% {
+					transform: translateX(-50%) translateY(0);
+				}
+				40% {
+					transform: translateX(-50%) translateY(-10px);
+				}
+				60% {
+					transform: translateX(-50%) translateY(-5px);
+				}
+			}
+
+			/* Navigation */
+			nav {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				padding: 1rem 2rem;
+				z-index: 1000;
+				transition: background 0.3s ease;
+			}
+
+			nav.scrolled {
+				background: rgba(26, 26, 46, 0.95);
+				backdrop-filter: blur(10px);
+				box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+			}
+
+			nav ul {
+				display: flex;
+				justify-content: center;
+				gap: 2.5rem;
+				list-style: none;
+			}
+
+			nav a {
+				color: #fff;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 0.95rem;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				transition: color 0.3s;
+			}
+
+			nav a:hover {
+				color: #ffd700;
+			}
+
+			/* Section Base */
+			section {
+				padding: 6rem 2rem;
+			}
+
+			.section-header {
+				text-align: center;
+				margin-bottom: 4rem;
+			}
+
+			.section-header h2 {
+				font-family: 'Playfair Display', serif;
+				font-size: 2.8rem;
+				color: #1a1a2e;
+				margin-bottom: 0.5rem;
+			}
+
+			.section-header .divider {
+				width: 60px;
+				height: 3px;
+				background: #ffd700;
+				margin: 1rem auto;
+				border-radius: 2px;
+			}
+
+			.section-header p {
+				font-size: 1.1rem;
+				color: #666;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+
+			/* Why Jesus Section */
+			#why {
+				background: #fff;
+			}
+
+			.reasons-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2.5rem;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+
+			.reason-card {
+				padding: 2.5rem;
+				background: #faf8f5;
+				border-radius: 16px;
+				transition: all 0.3s ease;
+				border: 1px solid #eee;
+			}
+
+			.reason-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+			}
+
+			.reason-card .icon {
+				font-size: 2.5rem;
+				margin-bottom: 1rem;
+			}
+
+			.reason-card h3 {
+				font-family: 'Playfair Display', serif;
+				font-size: 1.4rem;
+				color: #1a1a2e;
+				margin-bottom: 0.8rem;
+			}
+
+			.reason-card p {
+				color: #555;
+				line-height: 1.8;
+			}
+
+			.reason-card .verse {
+				display: block;
+				margin-top: 1rem;
+				font-style: italic;
+				color: #888;
+				font-size: 0.9rem;
+			}
+
+			/* Scripture Votes */
+			#scriptures {
+				background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+				color: #fff;
+			}
+
+			#scriptures .section-header h2 {
+				color: #fff;
+			}
+
+			#scriptures .section-header p {
+				color: rgba(255, 255, 255, 0.7);
+			}
+
+			.scriptures-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 2rem;
+				max-width: 1100px;
+				margin: 0 auto;
+			}
+
+			.scripture-card {
+				padding: 2rem;
+				background: rgba(255, 255, 255, 0.06);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 12px;
+				position: relative;
+				transition: all 0.3s ease;
+			}
+
+			.scripture-card:hover {
+				background: rgba(255, 255, 255, 0.1);
+				transform: translateY(-3px);
+			}
+
+			.scripture-card .quote-mark {
+				font-size: 3rem;
+				color: #ffd700;
+				opacity: 0.5;
+				line-height: 1;
+			}
+
+			.scripture-card blockquote {
+				font-size: 1.1rem;
+				line-height: 1.8;
+				margin: 0.5rem 0;
+				font-style: italic;
+			}
+
+			.scripture-card cite {
+				display: block;
+				margin-top: 1rem;
+				color: #ffd700;
+				font-style: normal;
+				font-weight: 600;
+			}
+
+			/* Who Is Jesus */
+			#about {
+				background: #faf8f5;
+			}
+
+			.about-content {
+				max-width: 900px;
+				margin: 0 auto;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 3rem;
+				align-items: center;
+			}
+
+			.about-text p {
+				color: #555;
+				line-height: 2;
+				margin-bottom: 1.5rem;
+				font-size: 1.05rem;
+			}
+
+			.about-attributes {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1rem;
+			}
+
+			.attribute {
+				padding: 1.2rem;
+				background: #fff;
+				border-radius: 12px;
+				text-align: center;
+				border: 1px solid #eee;
+				transition: all 0.3s ease;
+			}
+
+			.attribute:hover {
+				border-color: #ffd700;
+				box-shadow: 0 5px 20px rgba(255, 215, 0, 0.1);
+			}
+
+			.attribute .attr-icon {
+				font-size: 1.8rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.attribute h4 {
+				font-family: 'Playfair Display', serif;
+				color: #1a1a2e;
+				font-size: 1rem;
+				margin-bottom: 0.3rem;
+			}
+
+			.attribute p {
+				font-size: 0.85rem;
+				color: #888;
+			}
+
+			/* Footer */
+			footer {
+				background: #1a1a2e;
+				color: #fff;
+				padding: 3rem 2rem;
+				text-align: center;
+			}
+
+			footer .footer-verse {
+				font-style: italic;
+				font-size: 1.1rem;
+				opacity: 0.8;
+				max-width: 600px;
+				margin: 0 auto 1.5rem;
+				line-height: 1.8;
+			}
+
+			footer .footer-cross {
+				font-size: 2rem;
+				color: #ffd700;
+				margin-bottom: 1rem;
+			}
+
+			footer p:last-child {
+				font-size: 0.85rem;
+				opacity: 0.5;
+				margin-top: 1rem;
+			}
+
+			/* Responsive */
+			@media (max-width: 768px) {
+				.hero h1 {
+					font-size: 2.8rem;
+				}
+
+				.hero .tagline {
+					font-size: 1.1rem;
+				}
+
+				nav ul {
+					gap: 1.2rem;
+					font-size: 0.8rem;
+				}
+
+				.section-header h2 {
+					font-size: 2rem;
+				}
+
+				.about-content {
+					grid-template-columns: 1fr;
+				}
+
+				.scriptures-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Navigation -->
+		<nav id="navbar">
+			<ul>
+				<li><a href="#why">Why Jesus</a></li>
+				<li><a href="#scriptures">Scripture</a></li>
+				<li><a href="vote.html">Vote</a></li>
+				<li><a href="#about">Who Is Jesus</a></li>
+			</ul>
+		</nav>
+
+		<!-- Hero -->
+		<section class="hero" id="home">
+			<div class="hero-content">
+				<div class="cross-icon">&#10013;</div>
+				<h1>Vote for <span>Jesus</span></h1>
+				<p class="tagline">The only candidate who never breaks a promise</p>
+				<p class="scripture-hero">
+					"For God so loved the world, that he gave his only begotten Son, that
+					whosoever believeth in him should not perish, but have everlasting
+					life."
+					<br />&mdash; John 3:16
+				</p>
+				<a href="vote.html" class="cta-button">Cast Your Vote</a>
+			</div>
+			<div class="scroll-indicator">&#9661;</div>
+		</section>
+
+		<!-- Why Jesus -->
+		<section id="why">
+			<div class="section-header">
+				<h2>Why Vote for Jesus?</h2>
+				<div class="divider"></div>
+				<p>His platform has stood the test of time for over 2,000 years</p>
+			</div>
+			<div class="reasons-grid">
+				<div class="reason-card">
+					<div class="icon">&#10084;&#65039;</div>
+					<h3>Unconditional Love</h3>
+					<p>
+						He loved us first &mdash; not because of what we do, but because of
+						who we are. No other leader loves so completely and without
+						condition.
+					</p>
+					<span class="verse"
+						>"We love because he first loved us." &mdash; 1 John 4:19</span
+					>
+				</div>
+				<div class="reason-card">
+					<div class="icon">&#9878;&#65039;</div>
+					<h3>Perfect Justice &amp; Mercy</h3>
+					<p>
+						He is the only one who combines perfect justice with perfect mercy.
+						He paid the penalty we deserved so we could receive the grace we
+						don't.
+					</p>
+					<span class="verse"
+						>"He has shown you, O mortal, what is good: to act justly, love
+						mercy, and walk humbly with your God." &mdash; Micah 6:8</span
+					>
+				</div>
+				<div class="reason-card">
+					<div class="icon">&#128330;</div>
+					<h3>Eternal Promises</h3>
+					<p>
+						Politicians make promises they cannot keep. Jesus made promises that
+						transcend time &mdash; eternal life, peace, joy, and an everlasting
+						kingdom.
+					</p>
+					<span class="verse"
+						>"Heaven and earth will pass away, but my words will never pass
+						away." &mdash; Matthew 24:35</span
+					>
+				</div>
+				<div class="reason-card">
+					<div class="icon">&#127758;</div>
+					<h3>A Kingdom for All</h3>
+					<p>
+						His kingdom knows no borders, no divisions, no party lines. Every
+						tongue, tribe, and nation is welcome. True unity under one King.
+					</p>
+					<span class="verse"
+						>"There is neither Jew nor Gentile... for you are all one in Christ
+						Jesus." &mdash; Galatians 3:28</span
+					>
+				</div>
+				<div class="reason-card">
+					<div class="icon">&#128591;</div>
+					<h3>Servant Leadership</h3>
+					<p>
+						He washed his disciples' feet. He came not to be served, but to
+						serve. The greatest leader the world has ever known led through
+						humility.
+					</p>
+					<span class="verse"
+						>"The Son of Man did not come to be served, but to serve, and to
+						give his life as a ransom for many." &mdash; Mark 10:45</span
+					>
+				</div>
+				<div class="reason-card">
+					<div class="icon">&#127775;</div>
+					<h3>Hope That Never Fades</h3>
+					<p>
+						In a world of uncertainty, Jesus is the anchor. He conquered death
+						itself, giving us a living hope that nothing &mdash; absolutely
+						nothing &mdash; can take away.
+					</p>
+					<span class="verse"
+						>"I am the resurrection and the life. The one who believes in me
+						will live, even though they die." &mdash; John 11:25</span
+					>
+				</div>
+			</div>
+		</section>
+
+		<!-- Scripture Section -->
+		<section id="scriptures">
+			<div class="section-header">
+				<h2>His Platform in His Words</h2>
+				<div class="divider"></div>
+				<p>The Word of God &mdash; the ultimate campaign platform</p>
+			</div>
+			<div class="scriptures-grid">
+				<div class="scripture-card">
+					<div class="quote-mark">&ldquo;</div>
+					<blockquote>
+						Come to me, all you who are weary and burdened, and I will give you
+						rest.
+					</blockquote>
+					<cite>Matthew 11:28</cite>
+				</div>
+				<div class="scripture-card">
+					<div class="quote-mark">&ldquo;</div>
+					<blockquote>
+						I am the way, the truth, and the life. No one comes to the Father
+						except through me.
+					</blockquote>
+					<cite>John 14:6</cite>
+				</div>
+				<div class="scripture-card">
+					<div class="quote-mark">&ldquo;</div>
+					<blockquote>
+						Peace I leave with you; my peace I give you. I do not give to you as
+						the world gives. Do not let your hearts be troubled and do not be
+						afraid.
+					</blockquote>
+					<cite>John 14:27</cite>
+				</div>
+				<div class="scripture-card">
+					<div class="quote-mark">&ldquo;</div>
+					<blockquote>
+						And surely I am with you always, to the very end of the age.
+					</blockquote>
+					<cite>Matthew 28:20</cite>
+				</div>
+			</div>
+		</section>
+
+		<!-- Who Is Jesus -->
+		<section id="about">
+			<div class="section-header">
+				<h2>Who Is Jesus?</h2>
+				<div class="divider"></div>
+			</div>
+			<div class="about-content">
+				<div class="about-text">
+					<p>
+						Jesus Christ is the Son of God, born of the Virgin Mary in Bethlehem
+						over 2,000 years ago. He lived a sinless life, performed miracles,
+						taught with unparalleled wisdom, and ultimately gave His life on the
+						cross to pay the penalty for our sins.
+					</p>
+					<p>
+						Three days later, He rose from the dead &mdash; conquering sin,
+						death, and the grave forever. He ascended into heaven and promises
+						to return again. He invites every person to know Him, follow Him,
+						and receive the free gift of salvation through faith.
+					</p>
+					<p>
+						He is not just a historical figure. He is alive, and He is waiting
+						for your vote of faith.
+					</p>
+				</div>
+				<div class="about-attributes">
+					<div class="attribute">
+						<div class="attr-icon">&#128081;</div>
+						<h4>King of Kings</h4>
+						<p>Revelation 19:16</p>
+					</div>
+					<div class="attribute">
+						<div class="attr-icon">&#128039;</div>
+						<h4>Lamb of God</h4>
+						<p>John 1:29</p>
+					</div>
+					<div class="attribute">
+						<div class="attr-icon">&#9734;</div>
+						<h4>Light of the World</h4>
+						<p>John 8:12</p>
+					</div>
+					<div class="attribute">
+						<div class="attr-icon">&#127838;</div>
+						<h4>Bread of Life</h4>
+						<p>John 6:35</p>
+					</div>
+					<div class="attribute">
+						<div class="attr-icon">&#128657;</div>
+						<h4>The Good Shepherd</h4>
+						<p>John 10:11</p>
+					</div>
+					<div class="attribute">
+						<div class="attr-icon">&#9875;</div>
+						<h4>Our Anchor</h4>
+						<p>Hebrews 6:19</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer>
+			<div class="footer-cross">&#10013;</div>
+			<p class="footer-verse">
+				"If you declare with your mouth, 'Jesus is Lord,' and believe in your
+				heart that God raised him from the dead, you will be saved."
+				<br />&mdash; Romans 10:9
+			</p>
+			<p>&copy; Vote for Jesus &mdash; His Kingdom has no term limits</p>
+		</footer>
+
+		<script>
+			// Navbar scroll effect
+			window.addEventListener('scroll', () => {
+				const nav = document.getElementById('navbar');
+				nav.classList.toggle('scrolled', window.scrollY > 50);
+			});
+
+			// Smooth scroll for anchor links
+			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					const target = document.querySelector(this.getAttribute('href'));
+					if (target) {
+						target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				});
+			});
+
+			// Fade-in animation on scroll
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.style.opacity = '1';
+							entry.target.style.transform = 'translateY(0)';
+						}
+					});
+				},
+				{ threshold: 0.1 }
+			);
+
+			document
+				.querySelectorAll('.reason-card, .scripture-card, .attribute')
+				.forEach((el) => {
+					el.style.opacity = '0';
+					el.style.transform = 'translateY(20px)';
+					el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+					observer.observe(el);
+				});
+		</script>
+	</body>
+</html>

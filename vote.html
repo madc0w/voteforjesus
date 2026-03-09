@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cast Your Vote — Vote for Jesus</title>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Open+Sans:wght@300;400;600&display=swap');
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Open Sans', sans-serif;
+				color: #2c2c2c;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				background: linear-gradient(
+					135deg,
+					#1a1a2e 0%,
+					#16213e 40%,
+					#0f3460 100%
+				);
+				overflow-x: hidden;
+			}
+
+			/* Navigation */
+			nav {
+				width: 100%;
+				padding: 1rem 2rem;
+				background: rgba(26, 26, 46, 0.95);
+				backdrop-filter: blur(10px);
+				box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+			}
+
+			nav ul {
+				display: flex;
+				justify-content: center;
+				gap: 2.5rem;
+				list-style: none;
+			}
+
+			nav a {
+				color: #fff;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 0.95rem;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+				transition: color 0.3s;
+			}
+
+			nav a:hover,
+			nav a.active {
+				color: #ffd700;
+			}
+
+			/* Main Content */
+			.vote-page {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 3rem 2rem;
+				position: relative;
+			}
+
+			.vote-page::before {
+				content: '';
+				position: absolute;
+				top: -50%;
+				left: -50%;
+				width: 200%;
+				height: 200%;
+				background: radial-gradient(
+						circle at 30% 50%,
+						rgba(255, 215, 0, 0.08) 0%,
+						transparent 50%
+					),
+					radial-gradient(
+						circle at 70% 50%,
+						rgba(255, 255, 255, 0.05) 0%,
+						transparent 50%
+					);
+				animation: shimmer 15s ease-in-out infinite alternate;
+			}
+
+			@keyframes shimmer {
+				0% {
+					transform: translateX(-5%) translateY(-5%);
+				}
+				100% {
+					transform: translateX(5%) translateY(5%);
+				}
+			}
+
+			.vote-wrapper {
+				position: relative;
+				z-index: 1;
+				max-width: 650px;
+				width: 100%;
+			}
+
+			.vote-header {
+				text-align: center;
+				margin-bottom: 2.5rem;
+				color: #fff;
+			}
+
+			.vote-header .cross-icon {
+				font-size: 3rem;
+				color: #ffd700;
+				margin-bottom: 1rem;
+				filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
+			}
+
+			.vote-header h1 {
+				font-family: 'Playfair Display', serif;
+				font-size: 3rem;
+				font-weight: 900;
+				margin-bottom: 0.5rem;
+			}
+
+			.vote-header h1 span {
+				color: #ffd700;
+			}
+
+			.vote-header p {
+				font-size: 1.15rem;
+				opacity: 0.8;
+				font-weight: 300;
+			}
+
+			/* Ballot Card */
+			.ballot-box {
+				background: #fff;
+				border-radius: 24px;
+				padding: 3rem;
+				text-align: center;
+				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+				border-top: 4px solid #ffd700;
+			}
+
+			.ballot-box h2 {
+				font-family: 'Playfair Display', serif;
+				font-size: 1.8rem;
+				color: #1a1a2e;
+				margin-bottom: 1rem;
+			}
+
+			.ballot-box .description {
+				color: #555;
+				line-height: 1.8;
+				margin-bottom: 2rem;
+				font-size: 1.05rem;
+			}
+
+			.ballot-box .scripture {
+				font-style: italic;
+				color: #888;
+				margin-bottom: 2rem;
+				line-height: 1.7;
+				padding: 1rem 1.5rem;
+				background: #faf8f5;
+				border-radius: 12px;
+				border-left: 3px solid #ffd700;
+			}
+
+			.vote-btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 12px;
+				padding: 18px 55px;
+				background: linear-gradient(135deg, #ffd700, #ffaa00);
+				color: #1a1a2e;
+				border: none;
+				border-radius: 50px;
+				font-family: 'Open Sans', sans-serif;
+				font-size: 1.25rem;
+				font-weight: 700;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+			}
+
+			.vote-btn:hover {
+				transform: scale(1.05);
+				box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5);
+			}
+
+			.vote-btn.voted {
+				background: linear-gradient(135deg, #28a745, #20c997);
+				color: #fff;
+				cursor: default;
+			}
+
+			.vote-btn.voted:hover {
+				transform: none;
+				box-shadow: 0 4px 20px rgba(40, 167, 69, 0.3);
+			}
+
+			.vote-count {
+				margin-top: 2rem;
+				font-size: 1rem;
+				color: #888;
+			}
+
+			.vote-count strong {
+				color: #1a1a2e;
+				font-size: 2.2rem;
+				display: block;
+				margin-bottom: 0.3rem;
+				font-family: 'Playfair Display', serif;
+			}
+
+			.voter-message {
+				display: none;
+				margin-top: 2rem;
+				padding: 1.5rem;
+				background: #f0fff4;
+				border-radius: 12px;
+				color: #2d6a4f;
+				font-size: 1.05rem;
+				line-height: 1.7;
+				border: 1px solid #c3e6cb;
+			}
+
+			.voter-message.show {
+				display: block;
+				animation: fadeIn 0.6s ease;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(15px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.back-link {
+				display: inline-block;
+				margin-top: 2rem;
+				color: rgba(255, 255, 255, 0.7);
+				text-decoration: none;
+				font-size: 0.95rem;
+				transition: color 0.3s;
+			}
+
+			.back-link:hover {
+				color: #ffd700;
+			}
+
+			/* Footer */
+			footer {
+				background: rgba(0, 0, 0, 0.2);
+				color: #fff;
+				padding: 1.5rem 2rem;
+				text-align: center;
+				font-size: 0.85rem;
+				opacity: 0.6;
+			}
+
+			/* Responsive */
+			@media (max-width: 768px) {
+				.vote-header h1 {
+					font-size: 2.2rem;
+				}
+
+				.ballot-box {
+					padding: 2rem 1.5rem;
+				}
+
+				nav ul {
+					gap: 1.2rem;
+					font-size: 0.8rem;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Navigation -->
+		<nav>
+			<ul>
+				<li><a href="index.html#why">Why Jesus</a></li>
+				<li><a href="index.html#scriptures">Scripture</a></li>
+				<li><a href="vote.html" class="active">Vote</a></li>
+				<li><a href="index.html#about">Who Is Jesus</a></li>
+			</ul>
+		</nav>
+
+		<!-- Vote Page -->
+		<main class="vote-page">
+			<div class="vote-wrapper">
+				<div class="vote-header">
+					<div class="cross-icon">&#10013;</div>
+					<h1>Cast Your <span>Vote</span></h1>
+					<p>
+						This isn't a political election &mdash; it's the most important
+						decision of your life
+					</p>
+				</div>
+
+				<div class="ballot-box">
+					<h2>&#128499;&#65039; Your Ballot</h2>
+					<p class="description">
+						Voting for Jesus means choosing Him as the Lord of your life &mdash;
+						trusting in His sacrifice, following His teachings, and receiving
+						His gift of eternal life. It's not about religion. It's about a
+						relationship.
+					</p>
+					<div class="scripture">
+						"If you declare with your mouth, 'Jesus is Lord,' and believe in
+						your heart that God raised him from the dead, you will be saved."
+						<br />&mdash; Romans 10:9
+					</div>
+					<button class="vote-btn" id="voteBtn" onclick="castVote()">
+						&#10013; I Vote for Jesus
+					</button>
+					<div class="vote-count">
+						<strong id="voteCounter">0</strong>
+						people have voted for Jesus
+					</div>
+					<div class="voter-message" id="voterMessage">
+						&#127881; <strong>Your vote has been cast!</strong><br />
+						Welcome to the family of God. If this is your first time making this
+						decision, we encourage you to find a local Bible-believing church,
+						start reading the Gospel of John, and talk to God in prayer. He's
+						listening. Always.
+					</div>
+				</div>
+
+				<a href="index.html" class="back-link">&larr; Back to Home</a>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<p>&copy; Vote for Jesus &mdash; His Kingdom has no term limits</p>
+		</footer>
+
+		<script>
+			let voteCount = parseInt(
+				localStorage.getItem('voteForJesusCount') || '0'
+			);
+			let hasVoted = localStorage.getItem('hasVotedForJesus') === 'true';
+
+			function updateVoteDisplay() {
+				document.getElementById('voteCounter').textContent =
+					voteCount.toLocaleString();
+				if (hasVoted) {
+					const btn = document.getElementById('voteBtn');
+					btn.classList.add('voted');
+					btn.innerHTML = '&#10003; You Voted for Jesus!';
+					document.getElementById('voterMessage').classList.add('show');
+				}
+			}
+
+			function castVote() {
+				if (hasVoted) return;
+				hasVoted = true;
+				voteCount++;
+				localStorage.setItem('voteForJesusCount', voteCount);
+				localStorage.setItem('hasVotedForJesus', 'true');
+				updateVoteDisplay();
+			}
+
+			updateVoteDisplay();
+		</script>
+	</body>
+</html>

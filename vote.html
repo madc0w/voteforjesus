@@ -149,6 +149,174 @@
 				color: #ffd700;
 			}
 
+			.comments-section {
+				margin-top: 3rem;
+				padding-top: 2.5rem;
+				border-top: 1px solid #e4ddd3;
+			}
+
+			.comments-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				gap: 1.5rem;
+				margin-bottom: 2rem;
+			}
+
+			.comments-heading-group {
+				display: grid;
+				gap: 0.35rem;
+			}
+
+			.comments-section h2 {
+				font-family: 'Playfair Display', serif;
+				font-size: 2rem;
+				color: #1a1a2e;
+				margin: 0;
+			}
+
+			.comments-summary {
+				font-size: 0.95rem;
+				color: #7a6f61;
+				margin: 0;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+			}
+
+			.comments-note {
+				font-size: 0.95rem;
+				color: #7a6f61;
+				margin: 0;
+			}
+
+			.sign-in-button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0.9rem 1.25rem;
+				border: 1px solid #1a1a2e;
+				border-radius: 999px;
+				background: #1a1a2e;
+				color: #fff;
+				font-size: 0.95rem;
+				font-weight: 700;
+				letter-spacing: 0.03em;
+				text-decoration: none;
+				white-space: nowrap;
+				transition: transform 0.2s ease, box-shadow 0.2s ease,
+					background 0.2s ease;
+			}
+
+			.sign-in-button:hover {
+				background: #2b2b49;
+				box-shadow: 0 10px 20px rgba(26, 26, 46, 0.18);
+				transform: translateY(-1px);
+			}
+
+			.comment-list {
+				display: grid;
+				gap: 1.25rem;
+			}
+
+			.comment-card,
+			.comment-reply {
+				background: #fff;
+				border: 1px solid #ece5da;
+				border-radius: 14px;
+				padding: 1.1rem 1.2rem;
+				box-shadow: 0 10px 24px rgba(70, 52, 24, 0.06);
+			}
+
+			.comment-meta {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 1rem;
+				margin-bottom: 0.65rem;
+			}
+
+			.comment-user {
+				display: flex;
+				align-items: center;
+				gap: 0.8rem;
+			}
+
+			.comment-avatar {
+				width: 2.5rem;
+				height: 2.5rem;
+				border-radius: 50%;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 0.82rem;
+				font-weight: 700;
+				letter-spacing: 0.04em;
+				color: #1a1a2e;
+				background: linear-gradient(135deg, #f2e4c9, #e6d3ab);
+				border: 1px solid #e5d4b4;
+				flex-shrink: 0;
+			}
+
+			.comment-avatar.reply-avatar {
+				background: linear-gradient(135deg, #efe9de, #ddd3c3);
+				border-color: #d9cdbd;
+			}
+
+			.comment-identity {
+				display: grid;
+				gap: 0.15rem;
+			}
+
+			.comment-author {
+				font-weight: 700;
+				color: #1a1a2e;
+			}
+
+			.comment-badge {
+				font-size: 0.75rem;
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: #8b6b13;
+			}
+
+			.comment-time {
+				font-size: 0.85rem;
+				color: #9b8f82;
+			}
+
+			.comment-card p,
+			.comment-reply p {
+				margin: 0;
+				font-size: 1rem;
+				line-height: 1.75;
+			}
+
+			.comment-thread {
+				display: grid;
+				gap: 0.85rem;
+			}
+
+			.comment-actions {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				margin-top: 0.85rem;
+				font-size: 0.85rem;
+				color: #8f8377;
+			}
+
+			.comment-actions span {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.35rem;
+			}
+
+			.comment-reply {
+				margin-left: 2rem;
+				background: #f8f4ee;
+			}
+
 			/* Footer */
 			footer {
 				background: rgba(26, 26, 46, 0.95);
@@ -177,6 +345,29 @@
 					padding: 2rem 1.2rem;
 				}
 
+				.comments-header {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+
+				.comments-section h2 {
+					font-size: 1.6rem;
+				}
+
+				.comment-meta {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 0.25rem;
+				}
+
+				.comment-user {
+					width: 100%;
+				}
+
+				.comment-reply {
+					margin-left: 0.75rem;
+				}
+
 				nav ul {
 					gap: 1.2rem;
 					font-size: 0.8rem;
@@ -186,7 +377,6 @@
 	</head>
 
 	<body>
-		<!-- Navigation -->
 		<nav>
 			<ul>
 				<li><a href="index.html#why">Why Jesus</a></li>
@@ -196,7 +386,6 @@
 			</ul>
 		</nav>
 
-		<!-- Article -->
 		<main class="article-container">
 			<h1>True Christians Don't Vote</h1>
 			<p class="byline">Pastor William Lamont</p>
@@ -268,7 +457,7 @@
 
 			<div class="scripture">
 				By me kings reign and rulers issue decrees that are just; by me princes
-				govern, and nobles—all who rule on earth.<br />
+				govern, and nobles-all who rule on earth.<br />
 				&mdash; Proverbs 8:15-16
 			</div>
 
@@ -375,9 +564,338 @@
 			<p class="amen">Amen.</p>
 
 			<a href="index.html" class="back-link">&larr; Back to Home</a>
+
+			<section class="comments-section" aria-labelledby="comments-title">
+				<div class="comments-header">
+					<div class="comments-heading-group">
+						<h2 id="comments-title">Reader Comments</h2>
+						<p class="comments-summary">40 comments and replies</p>
+					</div>
+					<a
+						href="signin.html"
+						class="sign-in-button"
+						aria-label="Sign in to comment"
+						>Sign in to comment</a
+					>
+				</div>
+				<div class="comment-list">
+					<div class="comment-thread">
+						<article class="comment-card">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar">HR</span>
+									<div class="comment-identity">
+										<span class="comment-author">Hannah R.</span>
+									</div>
+								</div>
+								<span class="comment-time">32m ago</span>
+							</div>
+							<p>Not gonna lie, this just feels right</p>
+							<div class="comment-actions">
+								<span>♥ 17</span><span>Reply</span>
+							</div>
+						</article>
+						<article class="comment-reply">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar reply-avatar">LF</span>
+									<div class="comment-identity">
+										<span class="comment-author">Luke F.</span>
+									</div>
+								</div>
+								<span class="comment-time">29m ago</span>
+							</div>
+							<p>TRUMP for JESUS</p>
+							<div class="comment-actions">
+								<span>♥ 4</span><span>Reply</span>
+							</div>
+						</article>
+					</div>
+					<div class="comment-thread">
+						<article class="comment-card">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar">OD</span>
+									<div class="comment-identity">
+										<span class="comment-author">Olivia D.</span>
+									</div>
+								</div>
+								<span class="comment-time">39m ago</span>
+							</div>
+							<p>The scripture is accurate</p>
+							<div class="comment-actions">
+								<span>♥ 13</span><span>Reply</span>
+							</div>
+						</article>
+						<article class="comment-reply">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar reply-avatar">CS</span>
+									<div class="comment-identity">
+										<span class="comment-author">Caleb S.</span>
+									</div>
+								</div>
+								<span class="comment-time">34m ago</span>
+							</div>
+							<p>let JESUS guide your vote</p>
+							<div class="comment-actions">
+								<span>♥ 3</span><span>Reply</span>
+							</div>
+						</article>
+					</div>
+					<div class="comment-thread">
+						<article class="comment-card">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar">RN</span>
+									<div class="comment-identity">
+										<span class="comment-author">Rachel N.</span>
+									</div>
+								</div>
+								<span class="comment-time">45m ago</span>
+							</div>
+							<p>Pastor Lamont is a true prophet or the LORD!!!</p>
+							<div class="comment-actions">
+								<span>♥ 26</span><span>Reply</span>
+							</div>
+						</article>
+						<article class="comment-reply">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar reply-avatar">MJ</span>
+									<div class="comment-identity">
+										<span class="comment-author">Micah J.</span>
+									</div>
+								</div>
+								<span class="comment-time">41m ago</span>
+							</div>
+							<p>this is stupid</p>
+							<div class="comment-actions">
+								<span>♥ 7</span><span>Reply</span>
+							</div>
+						</article>
+					</div>
+					<div class="comment-thread">
+						<article class="comment-card">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar">AV</span>
+									<div class="comment-identity">
+										<span class="comment-author">Abigail V.</span
+										><span class="comment-badge">Top Fan</span>
+									</div>
+								</div>
+								<span class="comment-time">53m ago</span>
+							</div>
+							<p>I dont think so</p>
+							<div class="comment-actions">
+								<span>♥ 11</span><span>Reply</span>
+							</div>
+						</article>
+						<article class="comment-reply">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar reply-avatar">NG</span>
+									<div class="comment-identity">
+										<span class="comment-author">Nathan G.</span>
+									</div>
+								</div>
+								<span class="comment-time">48m ago</span>
+							</div>
+							<p>
+								nto sure why but i dont think this is right. i mean, i get the
+								point but it just seems like a stretch to say voting is a sin
+							</p>
+							<div class="comment-actions">
+								<span>♥ 4</span><span>Reply</span>
+							</div>
+						</article>
+					</div>
+					<div class="comment-thread">
+						<article class="comment-card">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar">ME</span>
+									<div class="comment-identity">
+										<span class="comment-author">Miriam E.</span>
+									</div>
+								</div>
+								<span class="comment-time">1h ago</span>
+							</div>
+							<p>
+								The whole thing has that “shared by an aunt on Facebook at
+								6:12am” energy, and I mean that as praise.
+							</p>
+							<div class="comment-actions">
+								<span>♥ 37</span><span>Reply</span>
+							</div>
+						</article>
+						<article class="comment-reply">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar reply-avatar">AQ</span>
+									<div class="comment-identity">
+										<span class="comment-author">Aaron Q.</span>
+									</div>
+								</div>
+								<span class="comment-time">58m ago</span>
+							</div>
+							<p>That is hilariously accurate.</p>
+							<div class="comment-actions">
+								<span>♥ 12</span><span>Reply</span>
+							</div>
+						</article>
+					</div>
+					<div class="comment-thread">
+						<article class="comment-card">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar">PI</span>
+									<div class="comment-identity">
+										<span class="comment-author">Phoebe I.</span>
+									</div>
+								</div>
+								<span class="comment-time">1h ago</span>
+							</div>
+							<p>
+								ok but the “God never gets it wrong” ending is a killer last
+								line. Very clean finish.
+							</p>
+							<div class="comment-actions">
+								<span>♥ 21</span><span>Reply</span>
+							</div>
+						</article>
+						<article class="comment-reply">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar reply-avatar">SU</span>
+									<div class="comment-identity">
+										<span class="comment-author">Simon U.</span>
+									</div>
+								</div>
+								<span class="comment-time">1h ago</span>
+							</div>
+							<p>
+								And “altar of secular humanism” is the line everyone’s gonna
+								quote first.
+							</p>
+							<div class="comment-actions">
+								<span>♥ 9</span><span>Reply</span>
+							</div>
+						</article>
+					</div>
+					<div class="comment-thread">
+						<article class="comment-card">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar">NO</span>
+									<div class="comment-identity">
+										<span class="comment-author">Naomi O.</span
+										><span class="comment-badge">Top Fan</span>
+									</div>
+								</div>
+								<span class="comment-time">1h ago</span>
+							</div>
+							<p>
+								This feels researched, even though it’s obviously heightened.
+								That combo is hard to fake.
+							</p>
+							<div class="comment-actions">
+								<span>♥ 16</span><span>Reply</span>
+							</div>
+						</article>
+						<article class="comment-reply">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar reply-avatar">JH</span>
+									<div class="comment-identity">
+										<span class="comment-author">Jacob H.</span>
+									</div>
+								</div>
+								<span class="comment-time">1h ago</span>
+							</div>
+							<p>Exactly!</p>
+							<div class="comment-actions">
+								<span>♥ 7</span><span>Reply</span>
+							</div>
+						</article>
+					</div>
+					<div class="comment-thread">
+						<article class="comment-card">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar">EW</span>
+									<div class="comment-identity">
+										<span class="comment-author">Elijah W.</span>
+									</div>
+								</div>
+								<span class="comment-time">2h ago</span>
+							</div>
+							<p>
+								"The world is sinking, and our job is not to polish the deck" is
+								absoltely right!!!!
+							</p>
+							<div class="comment-actions">
+								<span>♥ 28</span><span>Reply</span>
+							</div>
+						</article>
+						<article class="comment-reply">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar reply-avatar">AP</span>
+									<div class="comment-identity">
+										<span class="comment-author">Anna P.</span>
+									</div>
+								</div>
+								<span class="comment-time">2h ago</span>
+							</div>
+							<p>i underlined that one in my head immediately.</p>
+							<div class="comment-actions">
+								<span>♥ 5</span><span>Reply</span>
+							</div>
+						</article>
+					</div>
+					<div class="comment-thread">
+						<article class="comment-reply">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar reply-avatar">DL</span>
+									<div class="comment-identity">
+										<span class="comment-author">David L.</span>
+									</div>
+								</div>
+								<span class="comment-time">2h ago</span>
+							</div>
+							<p>full send is right 😂</p>
+							<div class="comment-actions">
+								<span>♥ 10</span><span>Reply</span>
+							</div>
+						</article>
+					</div>
+					<div class="comment-thread">
+						<article class="comment-card">
+							<div class="comment-meta">
+								<div class="comment-user">
+									<span class="comment-avatar">FJ</span>
+									<div class="comment-identity">
+										<span class="comment-author">Faith J.</span>
+									</div>
+								</div>
+								<span class="comment-time">3h ago</span>
+							</div>
+							<p>
+								I showed this to my brother and he asked me if it was a real
+								ministry site
+							</p>
+							<div class="comment-actions">
+								<span>♥ 18</span><span>Reply</span>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
 		</main>
 
-		<!-- Footer -->
 		<footer>
 			<p>&copy; Vote for Jesus &mdash; His Kingdom has no term limits</p>
 		</footer>
